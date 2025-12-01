@@ -97,7 +97,7 @@ namespace control_panel
                 .WithTcpServer(Broker, Port)
                 .WithCredentials(Username, Password)
                 .WithTlsOptions(new MqttClientTlsOptionsBuilder()
-                .WithTrustChain(caChain).Build())
+                    .WithTrustChain(caChain).Build())
                 .Build();
 
             var connAck = await _client.ConnectAsync(mqttClientOptions);
@@ -185,8 +185,8 @@ namespace control_panel
             }
 
             // Subscribe device to topic selected
-            string deviceTopic = Devices.ElementAt(deviceCombo.SelectedIndex).Value + "subscribe";
-            string payload = topicList.Items[0].Text;
+            string deviceTopic = Devices.ElementAt(deviceCombo.SelectedIndex).Value + Subscribe;
+            string payload = topicList.SelectedItems[0].Text;
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(deviceTopic)
@@ -216,7 +216,7 @@ namespace control_panel
             }
 
             // Send unsubscribe message
-            string deviceTopic = Devices.ElementAt(deviceCombo.SelectedIndex).Value + "unsubscribe";
+            string deviceTopic = Devices.ElementAt(deviceCombo.SelectedIndex).Value + Unsubscribe;
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(deviceTopic)

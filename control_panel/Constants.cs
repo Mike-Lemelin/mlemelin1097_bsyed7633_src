@@ -20,7 +20,9 @@ namespace control_panel
         };
 
         public const string Device1Path = "SENG3030/Thursday/Mlemelin1097/Mlemelin1097/";
-        public const string Device2Path = "SENG3030/Thursday/Mlemelin1097/BSyed7633/";
+        public const string Device2Path = "SENG3030/Thursday/Mlemelin1097/Bsyed7633/";
+        public const string Subscribe = "subscribe";
+        public const string Unsubscribe = "unsubscribe";
         public const string CaCert = @"
 -----BEGIN CERTIFICATE----- 
 MIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh 
