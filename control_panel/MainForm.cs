@@ -1,3 +1,10 @@
+/* PROGRAMMER:  Michael Lemelin
+ * FILE:        MainForm.cs
+ * DATE:        2025-11-28
+ * DESCRIPTION: This file contains the main form code that handles the core functionality of the
+ *              control panel. Handles subscribing devices to selected topics, and unsubscribing devices.
+ */
+
 using MQTTnet;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -37,7 +44,9 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Subscribes the MQTT client to the base topic and registers a handler
+        /// to receive all incoming MQTT messages from SENG3030/#. When a message comes in, the
+        /// message's topic is added to the topic list.
         /// </summary>
         /// <returns></returns>
         private async Task ReceiveMessages()
@@ -73,7 +82,8 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Handles the Connect button click event and creates an MQTT connection
+        /// using the configured broker settings, credentials, and CA certificate.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -106,7 +116,9 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Handles the Disconnect button click event by disconnecting from the
+        /// MQTT broker, clearing UI elements, and updating the
+        /// control states to show the disconnected status.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -123,7 +135,7 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Sets the device topic text when the device combo box selection changes.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -133,7 +145,7 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Sets the selected topic text when the user selects a topic from the list.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,7 +158,10 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Handles the Subscribe button click event by validating user selections
+        /// and publishing a subscription instruction to the selected device.
+        /// This sends the chosen MQTT topic to the device control topic,
+        /// allowing the device to begin listening to that topic.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -182,7 +197,8 @@ namespace control_panel
         }
 
         /// <summary>
-        /// 
+        /// Handles the Unsubscribe button click event by validating the selected device
+        /// and publishing an unsubscribe instruction to that device.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
